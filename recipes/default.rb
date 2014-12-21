@@ -17,3 +17,10 @@
 # limitations under the License.
 #
 
+node.set['rrdtool']['user'] = node['pnp4nagios']['user']
+node.set['rrdtool']['group'] = node['pnp4nagios']['group']
+
+include_recipe 'rrdtool::default'
+
+include_recipe 'pnp4nagios::install'
+include_recipe 'pnp4nagios::config'

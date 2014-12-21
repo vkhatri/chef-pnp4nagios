@@ -16,7 +16,7 @@ USE_RRDs = 1
 #
 # Path to XML/RRD files
 #
-RRDPATH = <%= @data_dir -%>
+RRDPATH = <%= @rrd_data_dir -%>
 
 #
 # Location of RRDtool binary
@@ -57,7 +57,7 @@ RRA_STEP = 60
 #
 # Name of the log file
 #
-LOG_FILE = <%= @log_file -%>
+LOG_FILE = <%= @log_dir -%>/perfdata.log
 
 #
 # Loglevel 0=silent 1=normal 2=debug
@@ -83,7 +83,7 @@ XML_UPDATE_DELAY = 0
 # Use only with RRDtool svn revision 1511+
 #
 # RRD_DAEMON_OPTS = unix:/tmp/rrdcached.sock
-RRD_DAEMON_OPTS =
+RRD_DAEMON_OPTS = <%= @rrd_listener -%>
 
 #
 # Spool directory used for internal statistics

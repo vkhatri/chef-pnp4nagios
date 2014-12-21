@@ -19,16 +19,16 @@
 #
 
 servicename=npcd
-prefix=/usr/local/pnp4nagios
-exec_prefix=/usr/local/pnp4nagios
-NpcdBin=/usr/local/pnp4nagios/bin/npcd
-NpcdCfgFile=/usr/local/pnp4nagios/etc/npcd.cfg
-NpcdVarDir=/usr/local/pnp4nagios/var
+prefix=<%= @install_dir %>
+exec_prefix=/bin
+NpcdBin=/usr/bin/npcd
+NpcdCfgFile=<%= @conf_dir -%>/npcd.cfg
+NpcdVarDir=<%= @home_dir %>
 NpcdRunFile=/var/run/npcd.pid
 NpcdLockDir=/var/lock/subsys
 NpcdLockFile=npcd
-NpcdUser=icinga
-NpcdGroup=icingacmd
+NpcdUser=<%= @user %>
+NpcdGroup=<% @group %>
 
 status_npcd (){
     pid_npcd
