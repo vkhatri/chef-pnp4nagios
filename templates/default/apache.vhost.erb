@@ -15,7 +15,7 @@ Alias /pnp4nagios "<%= @install_dir -%>/share"
    	#
    	AuthName "PNP4Nagios Access"
    	AuthType Basic
-   	AuthUserFile <%= @auth_file -%>
+   	AuthUserFile <%= @auth_file %>
    	Require valid-user
 	<IfModule mod_rewrite.c>
 		# Turn on URL rewriting

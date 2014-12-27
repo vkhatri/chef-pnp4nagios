@@ -24,6 +24,7 @@ default['pnp4nagios']['npcd_max_threads'] = 5
 default['pnp4nagios']['npcd_sleep_time'] = 15
 default['pnp4nagios']['perfdata_file_processing_interval'] = 15
 
+default['pnp4nagios']['manage_auth_file'] = false
 default['pnp4nagios']['auth_file'] = ::File.join(node['pnp4nagios']['conf_dir'], 'pnp4nagios.users')
 
 default['pnp4nagios']['log_dir'] = '/var/log/pnp4nagios'
