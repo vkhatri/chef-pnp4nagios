@@ -17,3 +17,90 @@
 # limitations under the License.
 #
 
+platform_sysconfig = value_for_platform_family(
+  'rhel' => '/etc/sysconfig',
+  'debian' => '/etc/default'
+)
+
+template ::File.join(node['pnp4nagios']['conf_dir'], 'npcd.cfg') do
+  source 'npcd.cfg.erb'
+  owner node['pnp4nagios']['user']
+  group node['pnp4nagios']['group']
+  mode node['pnp4nagios']['perms']
+  variables(:user => node['pnp4nagios']['user'],
+            :group => node['pnp4nagios']['group'],
+            :log_type => node['pnp4nagios']['log_type'],
+            :log_dir => node['pnp4nagios']['log_dir'],
+            :max_log_file_size => node['pnp4nagios']['max_log_file_size'],
+            :log_level => node['pnp4nagios']['log_level'],
+            :spool_dir => node['pnp4nagios']['spool_dir'],
+            :perfdata_run_cmd_args => node['pnp4nagios']['perfdata_run_cmd_args'],
+            :npcd_max_threads => node['pnp4nagios']['npcd_max_threads'],
+            :npcd_sleep_time => node['pnp4nagios']['npcd_sleep_time'],
+            :home_dir => node['pnp4nagios']['home_dir'],
+            :conf_dir => node['pnp4nagios']['conf_dir'],
+            :install_dir => node['pnp4nagios']['install_dir'])
+end
+
+template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
+  source 'process_perfdata.cfg.erb'
+  owner node['pnp4nagios']['user']
+  group node['pnp4nagios']['group']
+  mode node['pnp4nagios']['perms']
+  variables(:rrd_data_dir => node['pnp4nagios']['perf_data_dir'],
+            :conf_dir => node['pnp4nagios']['conf_dir'],
+            :install_dir => node['pnp4nagios']['install_dir'],
+            :log_dir => node['pnp4nagios']['log_dir'],
+            :use_rrds => node['pnp4nagios']['use_rrds'],
+            :rrd_listener => node['pnp4nagios']['rrd_listener'])
+end
+
+template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
+  source 'process_perfdata.cfg.erb'
+  owner node['pnp4nagios']['user']
+  group node['pnp4nagios']['group']
+  mode node['pnp4nagios']['perms']
+  action :nothing
+end
+
+template ::File.join(node['pnp4nagios']['conf_dir'], 'config.php') do
+  source 'config.php.erb'
+  owner node['pnp4nagios']['user']
+  group node['pnp4nagios']['group']
+  mode node['pnp4nagios']['perms']
+  variables(:rrdbase => node['pnp4nagios']['perf_data_dir'],
+            :conf_dir => node['pnp4nagios']['conf_dir'],
+            :install_dir => node['pnp4nagios']['install_dir'],
+            :rrd_listener => node['pnp4nagios']['rrd_listener'],
+            :livestatus_socket => node['pnp4nagios']['livestatus_socket'],
+            :nagios_base => node['pnp4nagios']['nagios_base'])
+end
+
+template '/etc/init.d/npcd' do
+  source "init.npcd.#{node['platform_family']}.erb"
+  owner 'root'
+  group 'root'
+  mode 0744
+  variables(:home_dir => node['pnp4nagios']['home_dir'],
+            :conf_dir => node['pnp4nagios']['conf_dir'],
+            :user => node['pnp4nagios']['user'],
+            :group => node['pnp4nagios']['group'],
+            :install_dir => node['pnp4nagios']['install_dir'])
+end
+
+template '/etc/init.d/pnp_gearman_worker' do
+  source "init.npcd.#{node['platform_family']}.erb"
+  owner 'root'
+  group 'root'
+  mode 0744
+  variables(:home_dir => node['pnp4nagios']['home_dir'],
+            :conf_dir => node['pnp4nagios']['conf_dir'],
+            :user => node['pnp4nagios']['user'],
+            :var_dir => node['pnp4nagios']['var_dir'],
+            :install_dir => node['pnp4nagios']['install_dir'])
+end
+
+service 'npcd' do
+  supports :restart => true
+  action [:enable, :start]
+end

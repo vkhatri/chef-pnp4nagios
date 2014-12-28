@@ -11,7 +11,7 @@ TIMEOUT = 15
 #
 # Use RRDs Perl module
 #
-USE_RRDs = 1
+USE_RRDs = <%= @use_rrds %>
 
 #
 # Path to XML/RRD files
@@ -47,7 +47,7 @@ RRD_HEARTBEAT = 8460
 #
 # File with RRA options used to create new RRD files
 #
-RRA_CFG = <%= @install_dir -%>/etc/rra.cfg
+RRA_CFG = <%= @conf_dir -%>/rra.cfg
 
 #
 # Interval at which PDPs are generated
@@ -88,7 +88,7 @@ RRD_DAEMON_OPTS = <%= @rrd_listener -%>
 #
 # Spool directory used for internal statistics
 #
-STATS_DIR = <%= @spool_dir -%>
+STATS_DIR = <%= @rrd_stats_dir -%>
 
 
 #########################################################

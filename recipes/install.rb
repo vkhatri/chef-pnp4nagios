@@ -30,7 +30,6 @@ end
 [node['pnp4nagios']['install_dir'],
  node['pnp4nagios']['conf_dir'],
  node['pnp4nagios']['home_dir'],
- node['pnp4nagios']['data_dir'],
  node['pnp4nagios']['spool_dir'],
  node['pnp4nagios']['log_dir']
 ].each do |d|
@@ -53,7 +52,7 @@ bash 'extract_compile_pnp4nagios' do
       --bindir=/usr/bin \
       --sbindir=/sbin \
       --with-perfdata-logfile=#{node['pnp4nagios']['log_dir']}/perdata.log \
-      --with-perfdata-dir=#{node['pnp4nagios']['data_dir']} \
+      --with-perfdata-dir=#{node['pnp4nagios']['perf_data_dir']} \
       --with-perfdata-spool-dir=#{node['pnp4nagios']['spool_dir']} \
       --with-httpd-conf=/tmp \
       --with-init-dir=/tmp \
@@ -65,4 +64,3 @@ bash 'extract_compile_pnp4nagios' do
   creates node['pnp4nagios']['source_dir']
   action :run
 end
-
