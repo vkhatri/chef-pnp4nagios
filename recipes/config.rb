@@ -17,11 +17,6 @@
 # limitations under the License.
 #
 
-platform_sysconfig = value_for_platform_family(
-  'rhel' => '/etc/sysconfig',
-  'debian' => '/etc/default'
-)
-
 template ::File.join(node['pnp4nagios']['conf_dir'], 'npcd.cfg') do
   source 'npcd.cfg.erb'
   owner node['pnp4nagios']['user']

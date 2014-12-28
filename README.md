@@ -1,15 +1,41 @@
 pnp4nagios Cookbook
-===================
+================
 
 [![Build Status](https://travis-ci.org/vkhatri/chef-pnp4nagios.svg?branch=master)](https://travis-ci.org/vkhatri/chef-pnp4nagios)
 
-This is a [Chef] cookbook to manage [pnp4nagios].
+This is a [Chef] cookbook to manage [PNP4Nagios] using LWRP.
 
 
 ## Repository
 
 https://github.com/vkhatri/chef-pnp4nagios
 
+
+## Dependencies
+
+- rrdtool
+
+
+## Recipes
+
+- `pnp4nagios::default`      - default recipe (used for run_list)
+
+- `pnp4nagios::install`      - install pnp4nagios
+
+- `pnp4nagios::config`      - configures pnp4nagios
+
+- `pnp4nagios::apache`      - install apache and manage pnp4nagios apache vhost
+
+
+## Attributes
+
+* `default['pnp4nagios']['version']` (default: `0.6.24`): pnp4nagios version
+
+* `default['pnp4nagios']['user']` (default: `nagios`): pnp4nagios user
+
+* `default['pnp4nagios']['group']` (default: `nagios`): pnp4nagios group
+
+* `default['pnp4nagios']['perms']` (default: `0664`): pnp4nagios permissions
 
 
 ## Contributing
@@ -43,6 +69,6 @@ limitations under the License.
 </pre>
 
 
-[pnp4nagios]: http://docs.pnp4nagios.org
 [Chef]: https://www.chef.io/
+[PNP4Nagios]: https://docs.pnp4nagios.org/
 [Contributors]: https://github.com/vkhatri/chef-pnp4nagios/graphs/contributors
