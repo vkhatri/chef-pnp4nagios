@@ -16,6 +16,12 @@ https://github.com/vkhatri/chef-pnp4nagios
 - rrdtool
 
 
+## RRDTool / RRDCached
+
+This cookbook does not manage rrdtool, instead utilize cookbook `rrdtool` to setup
+`rrdcached` service.
+
+
 ## Recipes
 
 - `pnp4nagios::default`      - default recipe (used for run_list)
@@ -31,11 +37,61 @@ https://github.com/vkhatri/chef-pnp4nagios
 
 * `default['pnp4nagios']['version']` (default: `0.6.24`): pnp4nagios version
 
+* `default['pnp4nagios']['source_url']` (default: ): pnp4nagios download source url
+
 * `default['pnp4nagios']['user']` (default: `nagios`): pnp4nagios user
 
 * `default['pnp4nagios']['group']` (default: `nagios`): pnp4nagios group
 
 * `default['pnp4nagios']['perms']` (default: `0664`): pnp4nagios permissions
+
+* `default['pnp4nagios']['users']['pnp4nagios']` (default: `pnp4nagios:pnp4nagios`): pnp4nagios default users
+
+* `default['pnp4nagios']['manage_auth_file']` (default: `false`): whether to manage http auth file
+
+* `default['pnp4nagios']['auth_file']` (default: `/etc/pnp4nagios/pnp4nagios.users`): auth file for /pnp4nagios
+
+* `default['pnp4nagios']['source_dir']` (default: `/usr/local/src/pnp4nagios-x.y.z`): pnp4nagios source directory to install
+
+* `default['pnp4nagios']['install_dir']` (default: `/usr/local/pnp4nagios`): pnp4nagios install directory
+
+* `default['pnp4nagios']['var_dir']` (default: `/usr/local/pnp4nagios/var`): pnp4nagios var directory
+
+* `default['pnp4nagios']['conf_dir']` (default: `/etc/pnp4nagios`): pnp4nagios configuration directory
+
+* `default['pnp4nagios']['home_dir']` (default: `/var/lib/pnp4nagios`): pnp4nagios home/lib directory
+
+* `default['pnp4nagios']['spool_dir']` (default: `/var/spool/icinga2/perfdata`): pnp4nagios spool directory for icinga/nagios performance data
+
+* `default['pnp4nagios']['log_dir']` (default: `/var/log/pnp4nagios`): pnp4nagios log directory
+
+* `default['pnp4nagios']['perf_data_dir']` (default: `/var/rrdtool/cache`): rrdcached / rrdtool cache directory
+
+* `default['pnp4nagios']['rrd_listener']` (default: `unix://var/rrdtool/rrdcached.sock`): pnp4nagios rrdtool / rrdcached listener / socket
+
+* `default['pnp4nagios']['rrd_stats_dir']` (default: `/var/rrdtool/stats`): rrdtool stats dir
+
+* `default['pnp4nagios']['use_rrds']` (default: `0`):
+
+* `default['pnp4nagios']['nagios_base']` (default: `/nagios/cgi-bin`): nagios / icinga cgi-bin base http url
+
+* `default['pnp4nagios']['multisite_base_url']` (default: `/nagios`): nagios / icinga base url
+
+* `default['pnp4nagios']['livestatus_socket']` (default: `unix:/usr/local/nagios/var/rw/live`): nagios / icinga livestatus socket
+
+* `default['pnp4nagios']['log_type']` (default: `file`): pnp4nagios log type
+
+* `default['pnp4nagios']['log_level']` (default: `0`): pnp4nagios log level
+
+* `default['pnp4nagios']['max_log_file_size']` (default: `10485760`): pnp4nagios max log size
+
+* `default['pnp4nagios']['perfdata_run_cmd_args']` (default: `--bulk`): pnp4nagios perfdata args for npcd
+
+* `default['pnp4nagios']['npcd_max_threads']` (default: `5`): npcd process threads
+
+* `default['pnp4nagios']['npcd_sleep_time']` (default: `15`): npcd process sleep time
+
+* `default['pnp4nagios']['perfdata_file_processing_interval']` (default: `15`): perfdata processing interval
 
 
 ## Contributing
