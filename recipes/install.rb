@@ -64,3 +64,7 @@ bash 'extract_compile_pnp4nagios' do
   creates node['pnp4nagios']['source_dir']
   action :run
 end
+
+file ::File.join(node['pnp4nagios']['install_dir'], 'share', 'install.php') do
+  action :delete
+end
