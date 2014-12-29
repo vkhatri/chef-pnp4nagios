@@ -30,7 +30,6 @@ end
 [node['pnp4nagios']['install_dir'],
  node['pnp4nagios']['conf_dir'],
  node['pnp4nagios']['home_dir'],
- node['pnp4nagios']['spool_dir'],
  node['pnp4nagios']['log_dir']
 ].each do |d|
   directory d do
