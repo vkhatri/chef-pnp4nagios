@@ -40,3 +40,6 @@ default['pnp4nagios']['use_rrds'] = 0
 default['pnp4nagios']['nagios_base'] = '/nagios/cgi-bin'
 default['pnp4nagios']['multisite_base_url'] = '/nagios'
 default['pnp4nagios']['livestatus_socket'] = 'unix:/usr/local/nagios/var/rw/live'
+
+default['pnp4nagios']['rra_step'] = 60
+default['pnp4nagios']['rra'] = [] # %w(RRA:AVERAGE:0.5:1:2880 RRA:AVERAGE:0.5:5:2880 RRA:AVERAGE:0.5:30:4320 RRA:AVERAGE:0.5:360:5840 RRA:MAX:0.5:1:2880 RRA:MAX:0.5:5:2880 RRA:MAX:0.5:30:4320 RRA:MAX:0.5:360:5840 RRA:MIN:0.5:1:2880 RRA:MIN:0.5:5:2880 RRA:MIN:0.5:30:4320 RRA:MIN:0.5:360:5840)

@@ -33,7 +33,6 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'npcd.cfg') do
             :npcd_max_threads => node['pnp4nagios']['npcd_max_threads'],
             :npcd_sleep_time => node['pnp4nagios']['npcd_sleep_time'],
             :home_dir => node['pnp4nagios']['home_dir'],
-            :conf_dir => node['pnp4nagios']['conf_dir'],
             :install_dir => node['pnp4nagios']['install_dir'])
 end
 
@@ -44,7 +43,6 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
   mode node['pnp4nagios']['perms']
   variables(:rrd_data_dir => node['pnp4nagios']['perf_data_dir'],
             :conf_dir => node['pnp4nagios']['conf_dir'],
-            :install_dir => node['pnp4nagios']['install_dir'],
             :log_dir => node['pnp4nagios']['log_dir'],
             :use_rrds => node['pnp4nagios']['use_rrds'],
             :rrd_listener => node['pnp4nagios']['rrd_listener'])
@@ -69,6 +67,14 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'config.php') do
             :rrd_listener => node['pnp4nagios']['rrd_listener'],
             :livestatus_socket => node['pnp4nagios']['livestatus_socket'],
             :nagios_base => node['pnp4nagios']['nagios_base'])
+end
+
+template ::File.join(node['pnp4nagios']['conf_dir'], 'rra.cfg') do
+  source 'rra.cfg.erb'
+  owner node['pnp4nagios']['user']
+  group node['pnp4nagios']['group']
+  mode node['pnp4nagios']['perms']
+  variables(:rra_step => node['pnp4nagios']['rra_step'], :rra => node['pnp4nagios']['rra'])
 end
 
 template '/etc/init.d/npcd' do
