@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Chef-pnp4nagios by vkhatri</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Chef-pnp4nagios</h1>
+        <p>Chef Cookbook to Install/Configure pnp4nagios</p>
+        <p class="view"><a href="https://github.com/vkhatri/chef-pnp4nagios">View the Project on GitHub <small>vkhatri/chef-pnp4nagios</small></a></p>
+        <ul>
+          <li><a href="https://github.com/vkhatri/chef-pnp4nagios/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/vkhatri/chef-pnp4nagios/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/vkhatri/chef-pnp4nagios">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="pnp4nagios-cookbook" class="anchor" href="#pnp4nagios-cookbook" aria-hidden="true"><span class="octicon octicon-link"></span></a>pnp4nagios Cookbook</h1>
+
+<p><a href="https://travis-ci.org/vkhatri/chef-pnp4nagios"><img src="https://travis-ci.org/vkhatri/chef-pnp4nagios.svg?branch=master" alt="Build Status"></a></p>
+
+<p>This is a <a href="https://www.chef.io/">Chef</a> cookbook to manage <a href="https://docs.pnp4nagios.org/">PNP4Nagios</a> using LWRP.</p>
+
+<h2>
+<a id="repository" class="anchor" href="#repository" aria-hidden="true"><span class="octicon octicon-link"></span></a>Repository</h2>
+
+<p><a href="https://github.com/vkhatri/chef-pnp4nagios">https://github.com/vkhatri/chef-pnp4nagios</a></p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>rrdtool</li>
+</ul>
+
+<h2>
+<a id="rrdtool--rrdcached" class="anchor" href="#rrdtool--rrdcached" aria-hidden="true"><span class="octicon octicon-link"></span></a>RRDTool / RRDCached</h2>
+
+<p>This cookbook does not manage rrdtool, instead utilize cookbook <code>rrdtool</code> to setup
+<code>rrdcached</code> service.</p>
+
+<h2>
+<a id="recipes" class="anchor" href="#recipes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recipes</h2>
+
+<ul>
+<li><p><code>pnp4nagios::default</code>      - default recipe (used for run_list)</p></li>
+<li><p><code>pnp4nagios::install</code>      - install pnp4nagios</p></li>
+<li><p><code>pnp4nagios::config</code>      - configures pnp4nagios</p></li>
+<li><p><code>pnp4nagios::apache</code>      - install apache and manage pnp4nagios apache vhost</p></li>
+</ul>
+
+<h2>
+<a id="attributes" class="anchor" href="#attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Attributes</h2>
+
+<ul>
+<li><p><code>default['pnp4nagios']['version']</code> (default: <code>0.6.24</code>): pnp4nagios version</p></li>
+<li><p><code>default['pnp4nagios']['source_url']</code> (default: ): pnp4nagios download source url</p></li>
+<li><p><code>default['pnp4nagios']['user']</code> (default: <code>nagios</code>): pnp4nagios user</p></li>
+<li><p><code>default['pnp4nagios']['group']</code> (default: <code>nagios</code>): pnp4nagios group</p></li>
+<li><p><code>default['pnp4nagios']['perms']</code> (default: <code>0664</code>): pnp4nagios permissions</p></li>
+<li><p><code>default['pnp4nagios']['users']['pnp4nagios']</code> (default: <code>pnp4nagios:pnp4nagios</code>): pnp4nagios default users</p></li>
+<li><p><code>default['pnp4nagios']['manage_auth_file']</code> (default: <code>false</code>): whether to manage http auth file</p></li>
+<li><p><code>default['pnp4nagios']['auth_file']</code> (default: <code>/etc/pnp4nagios/pnp4nagios.users</code>): auth file for /pnp4nagios</p></li>
+<li><p><code>default['pnp4nagios']['source_dir']</code> (default: <code>/usr/local/src/pnp4nagios-x.y.z</code>): pnp4nagios source directory to install</p></li>
+<li><p><code>default['pnp4nagios']['install_dir']</code> (default: <code>/usr/local/pnp4nagios</code>): pnp4nagios install directory</p></li>
+<li><p><code>default['pnp4nagios']['var_dir']</code> (default: <code>/usr/local/pnp4nagios/var</code>): pnp4nagios var directory</p></li>
+<li><p><code>default['pnp4nagios']['conf_dir']</code> (default: <code>/etc/pnp4nagios</code>): pnp4nagios configuration directory</p></li>
+<li><p><code>default['pnp4nagios']['home_dir']</code> (default: <code>/var/lib/pnp4nagios</code>): pnp4nagios home/lib directory</p></li>
+<li><p><code>default['pnp4nagios']['spool_dir']</code> (default: <code>/var/spool/icinga2/perfdata</code>): pnp4nagios spool directory for icinga/nagios performance data</p></li>
+<li><p><code>default['pnp4nagios']['log_dir']</code> (default: <code>/var/log/pnp4nagios</code>): pnp4nagios log directory</p></li>
+<li><p><code>default['pnp4nagios']['perf_data_dir']</code> (default: <code>/var/rrdtool/cache</code>): rrdcached / rrdtool cache directory</p></li>
+<li><p><code>default['pnp4nagios']['rrd_listener']</code> (default: ``): pnp4nagios rrdtool / rrdcached listener / socket</p></li>
+<li><p><code>default['pnp4nagios']['rrd_stats_dir']</code> (default: <code>/var/rrdtool/stats</code>): rrdtool stats dir</p></li>
+<li><p><code>default['pnp4nagios']['use_rrds']</code> (default: <code>0</code>):</p></li>
+<li><p><code>default['pnp4nagios']['nagios_base']</code> (default: <code>/nagios/cgi-bin</code>): nagios / icinga cgi-bin base http url</p></li>
+<li><p><code>default['pnp4nagios']['multisite_base_url']</code> (default: <code>/nagios</code>): nagios / icinga base url</p></li>
+<li><p><code>default['pnp4nagios']['livestatus_socket']</code> (default: <code>unix:/usr/local/nagios/var/rw/live</code>): nagios / icinga livestatus socket</p></li>
+<li><p><code>default['pnp4nagios']['log_type']</code> (default: <code>file</code>): pnp4nagios log type</p></li>
+<li><p><code>default['pnp4nagios']['log_level']</code> (default: <code>0</code>): pnp4nagios log level</p></li>
+<li><p><code>default['pnp4nagios']['max_log_file_size']</code> (default: <code>10485760</code>): pnp4nagios max log size</p></li>
+<li><p><code>default['pnp4nagios']['perfdata_run_cmd_args']</code> (default: <code>--bulk</code>): pnp4nagios perfdata args for npcd</p></li>
+<li><p><code>default['pnp4nagios']['npcd_max_threads']</code> (default: <code>5</code>): npcd process threads</p></li>
+<li><p><code>default['pnp4nagios']['npcd_sleep_time']</code> (default: <code>15</code>): npcd process sleep time</p></li>
+<li><p><code>default['pnp4nagios']['perfdata_file_processing_interval']</code> (default: <code>15</code>): perfdata processing interval</p></li>
+</ul>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork the repository on Github</li>
+<li>Create a named feature branch (like <code>add_component_x</code>)</li>
+<li>Write your change</li>
+<li>Write tests for your change (if applicable)</li>
+<li>Run the tests (<code>rake</code>), ensuring they all pass</li>
+<li>Write new resource/attribute description to <code>README.md</code>
+</li>
+<li>Write description about changes to PR</li>
+<li>Submit a Pull Request using Github</li>
+</ol>
+
+<h2>
+<a id="copyright--license" class="anchor" href="#copyright--license" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright &amp; License</h2>
+
+<p>Authors:: Virender Khatri and <a href="https://github.com/vkhatri/chef-pnp4nagios/graphs/contributors">Contributors</a></p>
+
+<pre>
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</pre>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/vkhatri">vkhatri</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
