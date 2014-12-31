@@ -67,7 +67,7 @@ This cookbook does not manage rrdtool, instead utilize cookbook `rrdtool` to set
 
 * `default['pnp4nagios']['perf_data_dir']` (default: `/var/rrdtool/cache`): rrdcached / rrdtool cache directory
 
-* `default['pnp4nagios']['rrd_listener']` (default: `unix://var/rrdtool/rrdcached.sock`): pnp4nagios rrdtool / rrdcached listener / socket
+* `default['pnp4nagios']['rrd_listener']` (default: ``): pnp4nagios rrdtool / rrdcached listener / socket
 
 * `default['pnp4nagios']['rrd_stats_dir']` (default: `/var/rrdtool/stats`): rrdtool stats dir
 
