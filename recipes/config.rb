@@ -22,6 +22,7 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'npcd.cfg') do
   owner node['pnp4nagios']['user']
   group node['pnp4nagios']['group']
   mode node['pnp4nagios']['perms']
+  notifies :restart, 'service[npcd]', :delayed
   variables(:user => node['pnp4nagios']['user'],
             :group => node['pnp4nagios']['group'],
             :log_type => node['pnp4nagios']['log_type'],
@@ -41,6 +42,7 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
   owner node['pnp4nagios']['user']
   group node['pnp4nagios']['group']
   mode node['pnp4nagios']['perms']
+  notifies :restart, 'service[npcd]', :delayed
   variables(:rrd_data_dir => node['pnp4nagios']['perf_data_dir'],
             :conf_dir => node['pnp4nagios']['conf_dir'],
             :log_dir => node['pnp4nagios']['log_dir'],
@@ -48,19 +50,12 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
             :rrd_listener => node['pnp4nagios']['rrd_listener'])
 end
 
-template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
-  source 'process_perfdata.cfg.erb'
-  owner node['pnp4nagios']['user']
-  group node['pnp4nagios']['group']
-  mode node['pnp4nagios']['perms']
-  action :nothing
-end
-
 template ::File.join(node['pnp4nagios']['conf_dir'], 'config.php') do
   source 'config.php.erb'
   owner node['pnp4nagios']['user']
   group node['pnp4nagios']['group']
   mode node['pnp4nagios']['perms']
+  notifies :restart, 'service[npcd]', :delayed
   variables(:rrdbase => node['pnp4nagios']['perf_data_dir'],
             :conf_dir => node['pnp4nagios']['conf_dir'],
             :install_dir => node['pnp4nagios']['install_dir'],
@@ -74,6 +69,7 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'rra.cfg') do
   owner node['pnp4nagios']['user']
   group node['pnp4nagios']['group']
   mode node['pnp4nagios']['perms']
+  notifies :restart, 'service[npcd]', :delayed
   variables(:rra_step => node['pnp4nagios']['rra_step'], :rra => node['pnp4nagios']['rra'])
 end
 
@@ -82,6 +78,7 @@ template '/etc/init.d/npcd' do
   owner 'root'
   group 'root'
   mode 0744
+  notifies :restart, 'service[npcd]', :delayed
   variables(:home_dir => node['pnp4nagios']['home_dir'],
             :conf_dir => node['pnp4nagios']['conf_dir'],
             :user => node['pnp4nagios']['user'],
