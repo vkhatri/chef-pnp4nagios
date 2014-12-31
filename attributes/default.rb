@@ -16,7 +16,7 @@ default['pnp4nagios']['conf_dir'] = '/etc/pnp4nagios'
 
 # home dir for various run time directories / files
 default['pnp4nagios']['home_dir'] = '/var/lib/pnp4nagios'
-default['pnp4nagios']['spool_dir'] = '/var/spool/icinga2/perfdata'
+default['pnp4nagios']['spool_dir'] = '/usr/local/nagios/var/spool'
 
 # npcd.cfg
 default['pnp4nagios']['perfdata_run_cmd_args'] = '--bulk'
