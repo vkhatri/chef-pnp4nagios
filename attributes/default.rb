@@ -33,7 +33,7 @@ default['pnp4nagios']['log_level'] = '0'
 default['pnp4nagios']['max_log_file_size'] = '10485760'
 
 default['pnp4nagios']['perf_data_dir'] = '/var/rrdtool/cache'
-default['pnp4nagios']['rrd_listener'] = 'unix://var/rrdtool/rrdcached.sock'
+default['pnp4nagios']['rrd_listener'] = nil
 default['pnp4nagios']['rrd_stats_dir'] = '/var/rrdtool/stats'
 
 default['pnp4nagios']['use_rrds'] = 0
