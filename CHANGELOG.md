@@ -3,6 +3,16 @@ pnp4nagios CHANGELOG
 
 This file is used to list changes made in each version of the pnp4nagios cookbook.
 
+0.2.0
+-----
+
+- Virender Khatri - applied temp fix for rrdcache socket connect error
+
+- Virender Khatri - added notify to files / templates resources
+
+- Virender Khatri - default to nagios spool directory
+
+
 0.1.5
 -----
 
