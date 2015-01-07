@@ -11,6 +11,7 @@ default['pnp4nagios']['source_url'] = "http://downloads.sourceforge.net/project/
 
 default['pnp4nagios']['source_dir'] = "/usr/local/src/pnp4nagios-#{node['pnp4nagios']['version']}"
 default['pnp4nagios']['install_dir'] = '/usr/local/pnp4nagios'
+default['pnp4nagios']['tmp_dir'] = ::File.join(node['pnp4nagios']['install_dir'], 'tmpdir')
 default['pnp4nagios']['var_dir'] = ::File.join(node['pnp4nagios']['install_dir'], 'var')
 default['pnp4nagios']['conf_dir'] = '/etc/pnp4nagios'
 

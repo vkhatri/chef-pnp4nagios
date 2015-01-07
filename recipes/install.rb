@@ -53,8 +53,8 @@ bash 'extract_compile_pnp4nagios' do
       --with-perfdata-logfile=#{node['pnp4nagios']['log_dir']}/perdata.log \
       --with-perfdata-dir=#{node['pnp4nagios']['perf_data_dir']} \
       --with-perfdata-spool-dir=#{node['pnp4nagios']['spool_dir']} \
-      --with-httpd-conf=/tmp \
-      --with-init-dir=/tmp \
+      --with-httpd-conf=#{node['pnp4nagios']['tmp_dir']} \
+      --with-init-dir=#{node['pnp4nagios']['tmp_dir']} \
       --with-nagios-user=#{node['pnp4nagios']['user']} \
       --with-nagios-group=#{node['pnp4nagios']['group']}
     make all
