@@ -3,6 +3,12 @@ pnp4nagios CHANGELOG
 
 This file is used to list changes made in each version of the pnp4nagios cookbook.
 
+0.2.1
+-----
+
+- Virender Khatri - fix for #1, changed tmpdir location from /tmp
+
+
 0.2.0
 -----
 

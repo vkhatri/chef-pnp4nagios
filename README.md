@@ -55,6 +55,8 @@ This cookbook does not manage rrdtool, instead utilize cookbook `rrdtool` to set
 
 * `default['pnp4nagios']['install_dir']` (default: `/usr/local/pnp4nagios`): pnp4nagios install directory
 
+* `default['pnp4nagios']['tmp_dir']` (default: `/usr/local/pnp4nagios/tmpdir`): pnp4nagios install tmp directory
+
 * `default['pnp4nagios']['var_dir']` (default: `/usr/local/pnp4nagios/var`): pnp4nagios var directory
 
 * `default['pnp4nagios']['conf_dir']` (default: `/etc/pnp4nagios`): pnp4nagios configuration directory
