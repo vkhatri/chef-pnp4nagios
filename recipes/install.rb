@@ -28,6 +28,7 @@ remote_file tarball_file do
 end
 
 [node['pnp4nagios']['install_dir'],
+ node['pnp4nagios']['tmp_dir'],
  node['pnp4nagios']['conf_dir'],
  node['pnp4nagios']['home_dir'],
  node['pnp4nagios']['log_dir']
