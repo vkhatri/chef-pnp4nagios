@@ -57,6 +57,9 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'config.php') do
   mode node['pnp4nagios']['perms']
   notifies :restart, 'service[npcd]', :delayed
   variables(:rrdbase => node['pnp4nagios']['perf_data_dir'],
+            :refresh => node['pnp4nagios']['refresh'],
+            :graph_opt => node['pnp4nagios']['graph_opt'],
+            :pdf_graph_opt => node['pnp4nagios']['pdf_graph_opt'],
             :conf_dir => node['pnp4nagios']['conf_dir'],
             :install_dir => node['pnp4nagios']['install_dir'],
             :rrd_listener => node['pnp4nagios']['rrd_listener'],
