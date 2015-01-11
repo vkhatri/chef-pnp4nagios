@@ -1,3 +1,7 @@
+#
+# This file is managed by Chef.
+# Do NOT modify this file directly.
+#
 # pnp4nagios–0.6.24
 # Config File for process_perfdata.pl
 #
@@ -6,7 +10,7 @@
 #
 # process_perfdata.pl timeout in seconds
 #
-TIMEOUT = 15
+TIMEOUT = <%= @timeout %>
 
 #
 # Use RRDs Perl module
@@ -16,12 +20,12 @@ USE_RRDs = <%= @use_rrds %>
 #
 # Path to XML/RRD files
 #
-RRDPATH = <%= @rrd_data_dir -%>
+RRDPATH = <%= @rrd_path -%>
 
 #
 # Location of RRDtool binary
 #
-RRDTOOL = /usr/bin/rrdtool
+RRDTOOL = <%= @rrdtool %>
 
 #
 # Location of PNP config files
@@ -37,12 +41,12 @@ CFG_DIR = <%= @conf_dir -%>
 # one RRD database per datasource.
 # RRD_STORAGE_TYPE = MULTIPLE
 #
-RRD_STORAGE_TYPE = SINGLE
+RRD_STORAGE_TYPE = <%= @rrd_storage_type %>
 
 #
 # Max. interval between samples/updates
 #
-RRD_HEARTBEAT = 8460
+RRD_HEARTBEAT = <%= @rrd_heartbeat %>
 
 #
 # File with RRA options used to create new RRD files
@@ -52,7 +56,7 @@ RRA_CFG = <%= @conf_dir -%>/rra.cfg
 #
 # Interval at which PDPs are generated
 #
-RRA_STEP = 60
+RRA_STEP = <%= @rra_step %>
 
 #
 # Name of the log file
@@ -62,14 +66,14 @@ LOG_FILE = <%= @log_dir -%>/perfdata.log
 #
 # Loglevel 0=silent 1=normal 2=debug
 #
-LOG_LEVEL = 0
+LOG_LEVEL = <%= @log_level %>
 
 #
 # XML encoding
 # The supported encodings are ISO-8859-1, UTF-8 and US-ASCII.
 # http://www.php.net/xml-parser-create
 #
-XML_ENC = UTF-8
+XML_ENC = <%= @xml_enc %>
 
 #
 # XML update delay in seconds
@@ -77,18 +81,18 @@ XML_ENC = UTF-8
 #
 # Use this option to reduce disk I/O
 #
-XML_UPDATE_DELAY = 0
+XML_UPDATE_DELAY = <%= @xml_update_delay %>
 
 #
 # Use only with RRDtool svn revision 1511+
 #
 # RRD_DAEMON_OPTS = unix:/tmp/rrdcached.sock
-RRD_DAEMON_OPTS = <%= @rrd_listener -%>
+RRD_DAEMON_OPTS = <%= @rrd_daemon_opts %>
 
 #
 # Spool directory used for internal statistics
 #
-STATS_DIR = <%= @rrd_stats_dir -%>
+STATS_DIR = <%= @rrd_stats_dir %>
 
 
 #########################################################
@@ -98,18 +102,18 @@ STATS_DIR = <%= @rrd_stats_dir -%>
 #
 # How many child processes
 #
-PREFORK = 1
+PREFORK = <%= @prefork %>
 
 #
 # Gearman server to connect to
 # Comma separated list of Gearman job servers
 #
-GEARMAN_HOST = localhost:4730
+GEARMAN_HOST = <%= @gearman_host %>
 
 #
 # Restart child process after a given count of requests
 #
-REQUESTS_PER_CHILD = 10000
+REQUESTS_PER_CHILD = <%= @requests_per_child %>
 
 #
 # Enables or disables encryption.
@@ -119,17 +123,20 @@ REQUESTS_PER_CHILD = 10000
 # secret eithr via the KEY or the KEY_FILE option.
 # Default is 1.
 #
-ENCRYPTION = 1
+ENCRYPTION = <%= @encryption %>
 
 #
 # A shared password which will be used for
 # encryption of data pakets. Should be at least 8
 # bytes long. Maximum length is 32 characters.
 #
-KEY = should_be_changed
+KEY = <%= @key %>
 
 #
 # The shared password will be read from this file.
 # Only the first 32 characters will be used.
 #
 # KEY_FILE = /usr/local/pnp4nagios/etc/secret.key
+<% if @key_file -%>
+KEY_FILE = <%= @key_file %>
+<% end -%>

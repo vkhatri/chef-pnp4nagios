@@ -115,7 +115,7 @@ perfdata_file_run_cmd_args = <%= @perfdata_run_cmd_args %>
 #
 # identify_npcd = 0|1 (default: 1)
 
-identify_npcd = 1
+identify_npcd = <%= @identify_npcd %>
 
 
 # npcd_max_threads - define how many parallel threads we
@@ -127,7 +127,7 @@ npcd_max_threads = <%= @npcd_max_threads %>
 #
 # sleep_time = 15 (default)
 
-sleep_time = <%= @npcd_sleep_time %>
+sleep_time = <%= @sleep_time %>
 
 
 # EXPERIMENTAL
@@ -142,12 +142,12 @@ sleep_time = <%= @npcd_sleep_time %>
 # 07/15/2008: Every value above 0.0 will
 #             enable this feature
 
-load_threshold = 0.0
+load_threshold = <%= @load_threshold %>
 
 
 # location of your pid file
 
-pid_file=/var/run/npcd.pid
+pid_file=<%= @pid_file -%>
 
 
 #########################
@@ -187,12 +187,12 @@ perfdata_file = <%= @home_dir -%>/perfdata.dump
 # perfdata_spool_filename = perfdata-NY
 # perfdata_spool_filename = perfdata-LA
 
-perfdata_spool_filename = perfdata
+perfdata_spool_filename = <%= @perfdata_spool_filename -%>
 
 #
 # perfdata_file_processing_interval
 #
-perfdata_file_processing_interval = 15
+perfdata_file_processing_interval = <%= @perfdata_file_processing_interval -%>
 
 # We have to end with a newline
 

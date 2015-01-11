@@ -3,7 +3,6 @@ default['pnp4nagios']['process_perfdata']['timeout'] = 15
 default['pnp4nagios']['process_perfdata']['use_rrds'] = 1
 default['pnp4nagios']['process_perfdata']['rrd_storage_type'] = 'SINGLE'
 default['pnp4nagios']['process_perfdata']['rrd_heartbeat'] = 8460
-default['pnp4nagios']['process_perfdata']['rra_step'] = 60
 default['pnp4nagios']['process_perfdata']['log_level'] = 0
 default['pnp4nagios']['process_perfdata']['xml_enc'] = 'UTF-8'
 default['pnp4nagios']['process_perfdata']['xml_update_delay'] = 0

@@ -25,16 +25,22 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'npcd.cfg') do
   notifies :restart, 'service[npcd]', :delayed
   variables(:user => node['pnp4nagios']['user'],
             :group => node['pnp4nagios']['group'],
-            :log_type => node['pnp4nagios']['log_type'],
-            :log_dir => node['pnp4nagios']['log_dir'],
-            :max_log_file_size => node['pnp4nagios']['max_log_file_size'],
-            :log_level => node['pnp4nagios']['log_level'],
             :spool_dir => node['pnp4nagios']['spool_dir'],
-            :perfdata_run_cmd_args => node['pnp4nagios']['perfdata_run_cmd_args'],
-            :npcd_max_threads => node['pnp4nagios']['npcd_max_threads'],
-            :npcd_sleep_time => node['pnp4nagios']['npcd_sleep_time'],
+            :log_dir => node['pnp4nagios']['log_dir'],
             :home_dir => node['pnp4nagios']['home_dir'],
-            :install_dir => node['pnp4nagios']['install_dir'])
+            :install_dir => node['pnp4nagios']['install_dir'],
+
+            :log_type => node['pnp4nagios']['npcd']['log_type'],
+            :max_log_file_size => node['pnp4nagios']['npcd']['max_log_file_size'],
+            :log_level => node['pnp4nagios']['npcd']['log_level'],
+            :perfdata_run_cmd_args => node['pnp4nagios']['npcd']['perfdata_run_cmd_args'],
+            :identify_npcd => node['pnp4nagios']['npcd']['identify_npcd'],
+            :npcd_max_threads => node['pnp4nagios']['npcd']['npcd_max_threads'],
+            :sleep_time => node['pnp4nagios']['npcd']['sleep_time'],
+            :load_threshold => node['pnp4nagios']['npcd']['load_threshold'],
+            :pid_file => node['pnp4nagios']['npcd']['pid_file'],
+            :perfdata_spool_filename => node['pnp4nagios']['npcd']['perfdata_spool_filename'],
+            :perfdata_file_processing_interval => node['pnp4nagios']['npcd']['perfdata_file_processing_interval'])
 end
 
 template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
@@ -43,11 +49,27 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'process_perfdata.cfg') do
   group node['pnp4nagios']['group']
   mode node['pnp4nagios']['perms']
   notifies :restart, 'service[npcd]', :delayed
-  variables(:rrd_data_dir => node['pnp4nagios']['perf_data_dir'],
-            :conf_dir => node['pnp4nagios']['conf_dir'],
+  variables(:conf_dir => node['pnp4nagios']['conf_dir'],
             :log_dir => node['pnp4nagios']['log_dir'],
-            :use_rrds => node['pnp4nagios']['use_rrds'],
-            :rrd_listener => node['pnp4nagios']['rrd_listener'])
+            :rrd_daemon_opts => node['pnp4nagios']['rrd_daemon_opts'],
+            :rrd_path => node['pnp4nagios']['perf_data_dir'],
+            :rrdtool => node['pnp4nagios']['rrdtool'],
+            :rrd_stats_dir => node['pnp4nagios']['rrd_stats_dir'],
+
+            :timeout => node['pnp4nagios']['process_perfdata']['timeout'],
+            :use_rrds => node['pnp4nagios']['process_perfdata']['use_rrds'],
+            :rrd_storage_type => node['pnp4nagios']['process_perfdata']['rrd_storage_type'],
+            :rrd_heartbeat => node['pnp4nagios']['process_perfdata']['rrd_heartbeat'],
+            :rra_step => node['pnp4nagios']['rra_step'],
+            :log_level => node['pnp4nagios']['process_perfdata']['log_level'],
+            :xml_enc => node['pnp4nagios']['process_perfdata']['xml_enc'],
+            :xml_update_delay => node['pnp4nagios']['process_perfdata']['xml_update_delay'],
+            :prefork => node['pnp4nagios']['process_perfdata']['prefork'],
+            :gearman_host => node['pnp4nagios']['process_perfdata']['gearman_host'],
+            :requests_per_child => node['pnp4nagios']['process_perfdata']['requests_per_child'],
+            :encryption => node['pnp4nagios']['process_perfdata']['encryption'],
+            :key => node['pnp4nagios']['process_perfdata']['key'],
+            :key_file => node['pnp4nagios']['process_perfdata']['key_file'])
 end
 
 template ::File.join(node['pnp4nagios']['conf_dir'], 'config.php') do
@@ -57,14 +79,50 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'config.php') do
   mode node['pnp4nagios']['perms']
   notifies :restart, 'service[npcd]', :delayed
   variables(:rrdbase => node['pnp4nagios']['perf_data_dir'],
-            :refresh => node['pnp4nagios']['refresh'],
-            :graph_opt => node['pnp4nagios']['graph_opt'],
-            :pdf_graph_opt => node['pnp4nagios']['pdf_graph_opt'],
             :conf_dir => node['pnp4nagios']['conf_dir'],
             :install_dir => node['pnp4nagios']['install_dir'],
-            :rrd_listener => node['pnp4nagios']['rrd_listener'],
+            :rrd_daemon_opts => node['pnp4nagios']['rrd_daemon_opts'],
             :livestatus_socket => node['pnp4nagios']['livestatus_socket'],
-            :nagios_base => node['pnp4nagios']['nagios_base'])
+            :nagios_base => node['pnp4nagios']['nagios_base'],
+            :rrdtool => node['pnp4nagios']['rrdtool'],
+
+            :views => node['pnp4nagios']['config']['views'],
+            :use_url_rewriting => node['pnp4nagios']['config']['use_url_rewriting'],
+            :graph_width => node['pnp4nagios']['config']['graph_width'],
+            :graph_height => node['pnp4nagios']['config']['graph_height'],
+            :zgraph_width => node['pnp4nagios']['config']['zgraph_width'],
+            :zgraph_height => node['pnp4nagios']['config']['zgraph_height'],
+            :right_zoom_offset => node['pnp4nagios']['config']['right_zoom_offset'],
+            :pdf_width => node['pnp4nagios']['config']['pdf_width'],
+            :pdf_height => node['pnp4nagios']['config']['pdf_height'],
+            :pdf_page_size => node['pnp4nagios']['config']['pdf_page_size'],
+            :pdf_margin_top => node['pnp4nagios']['config']['pdf_margin_top'],
+            :pdf_margin_left => node['pnp4nagios']['config']['pdf_margin_left'],
+            :pdf_margin_right => node['pnp4nagios']['config']['pdf_margin_right'],
+            :graph_opt => node['pnp4nagios']['config']['graph_opt'],
+            :pdf_graph_opt => node['pnp4nagios']['config']['pdf_graph_opt'],
+            :refresh => node['pnp4nagios']['config']['refresh'],
+            :max_age => node['pnp4nagios']['config']['max_age'],
+            :temp => node['pnp4nagios']['config']['temp'],
+            :multisite_base_url => node['pnp4nagios']['config']['multisite_base_url'],
+            :multisite_site => node['pnp4nagios']['config']['multisite_site'],
+            :auth_enabled => node['pnp4nagios']['config']['auth_enabled'],
+            :allowed_for_all_services => node['pnp4nagios']['config']['allowed_for_all_services'],
+            :allowed_for_all_hosts => node['pnp4nagios']['config']['allowed_for_all_hosts'],
+            :allowed_for_service_links => node['pnp4nagios']['config']['allowed_for_service_links'],
+            :allowed_for_host_search => node['pnp4nagios']['config']['allowed_for_host_search'],
+            :allowed_for_host_overview => node['pnp4nagios']['config']['allowed_for_host_overview'],
+            :allowed_for_pages => node['pnp4nagios']['config']['allowed_for_pages'],
+            :overview_range => node['pnp4nagios']['config']['overview_range'],
+            :popup_width => node['pnp4nagios']['config']['popup_width'],
+            :ui_theme => node['pnp4nagios']['config']['ui_theme'],
+            :lang => node['pnp4nagios']['config']['lang'],
+            :date_fmt => node['pnp4nagios']['config']['date_fmt'],
+            :enable_recursive_template_search => node['pnp4nagios']['config']['enable_recursive_template_search'],
+            :show_xml_icon => node['pnp4nagios']['config']['show_xml_icon'],
+            :use_fpdf => node['pnp4nagios']['config']['use_fpdf'],
+            :use_calendar => node['pnp4nagios']['config']['use_calendar'],
+            :mobile_devices => node['pnp4nagios']['config']['mobile_devices'])
 end
 
 template ::File.join(node['pnp4nagios']['conf_dir'], 'rra.cfg') do

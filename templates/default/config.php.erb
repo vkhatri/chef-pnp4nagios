@@ -27,37 +27,37 @@
 # URL rewriting is used by default to create friendly URLs.
 # Set this value to '0' if URL rewriting is not available on your system.
 #
-$conf['use_url_rewriting'] = 1;
+$conf['use_url_rewriting'] = <%= @use_url_rewriting -%>;
 #
 # Location of rrdtool binary
 #
-$conf['rrdtool'] = "/usr/bin/rrdtool";
+$conf['rrdtool'] = "<%= @rrdtool -%>";
 #
 # RRDTool image size of graphs
 #
-$conf['graph_width'] = "500";
-$conf['graph_height'] = "100";
+$conf['graph_width'] = "<%= @graph_width -%>";
+$conf['graph_height'] = "<%= @graph_height -%>";
 #
 # RRDTool image size of graphs in zoom window
 #
-$conf['zgraph_width'] = "500";
-$conf['zgraph_height'] = "100";
+$conf['zgraph_width'] = "<%= @zgraph_width -%>";
+$conf['zgraph_height'] = "<%= @zgraph_height -%>";
 #
 # Right zoom box offset.
 # rrdtool 1.3.x = 22px
 # rrdtool 1.4.x = 30px
 #
-$conf['right_zoom_offset'] = 30;
+$conf['right_zoom_offset'] = <%= @right_zoom_offset -%>;
 
 #
 # RRDTool image size of PDFs
 #
-$conf['pdf_width']        = "675";
-$conf['pdf_height']       = "100";
-$conf['pdf_page_size']    = "A4";   # A4 or Letter
-$conf['pdf_margin_top']   = "30";
-$conf['pdf_margin_left']  = "17.5";
-$conf['pdf_margin_right'] = "10";
+$conf['pdf_width']        = "<%= @pdf_width -%>";
+$conf['pdf_height']       = "<%= @pdf_height -%>";
+$conf['pdf_page_size']    = "<%= @pdf_page_size -%>";   # A4 or Letter
+$conf['pdf_margin_top']   = "<%= @pdf_margin_top -%>";
+$conf['pdf_margin_left']  = "<%= @pdf_margin_left -%>";
+$conf['pdf_margin_right'] = "<%= @pdf_margin_right -%>";
 #
 # Additional options for RRDTool
 #
@@ -84,11 +84,11 @@ $conf['refresh'] = "<%= @refresh -%>";
 #
 # Max age for RRD files in seconds
 #
-$conf['max_age'] = 60*60*6;
+$conf['max_age'] = <%= @max_age -%>;
 #
 # Directory for temporary files used for PDF creation
 #
-$conf['temp'] = "/var/tmp";
+$conf['temp'] = "<%= @temp -%>";
 #
 # Link back to Nagios or Thruk ( www.thruk.org )
 #
@@ -97,18 +97,18 @@ $conf['nagios_base'] = "<%= @nagios_base -%>";
 #
 # Link back to check_mk´s multisite ( http://mathias-kettner.de/checkmk_multisite.html )
 #
-$conf['multisite_base_url'] = "/check_mk";
+$conf['multisite_base_url'] = "<%= @multisite_base_url -%>";
 #
 # Multisite Site ID this PNP installation is linked to
 # This is the same value as defined in etc/multisite.mk
 #
-$conf['multisite_site'] = "";
+$conf['multisite_site'] = "<%= @multisite_site -%>";
 
 #
 # check authorization against mk_livestatus API
 # Available since 0.6.10
 #
-$conf['auth_enabled'] = FALSE;
+$conf['auth_enabled'] = <%= @auth_enabled -%>;
 
 #
 # Livestatus socket path
@@ -121,60 +121,60 @@ $conf['livestatus_socket'] = "<%= @livestatus_socket -%>";
 # Keywords: <USERNAME>
 # Example: conf['allowed_for_all_services'] = "nagiosadmin,operator";
 # This option is used while $conf['auth_enabled'] = TRUE
-$conf['allowed_for_all_services'] = "";
-$conf['allowed_for_all_hosts'] = "";
+$conf['allowed_for_all_services'] = "<%= @allowed_for_all_services.join(',') -%>";
+$conf['allowed_for_all_hosts'] = "<%= @allowed_for_all_hosts.join(',') -%>";
 
 # Which user is allowed to see additional service links ?
 # Keywords: EVERYONE NONE <USERNAME>
 # Example: conf['allowed_for_service_links'] = "nagiosadmin,operator";
 #
-$conf['allowed_for_service_links'] = "EVERYONE";
+$conf['allowed_for_service_links'] = "<%= @allowed_for_service_links.join(',') -%>";
 
 #
 # Who can use the host search function ?
 # Keywords: EVERYONE NONE <USERNAME>
 #
-$conf['allowed_for_host_search'] = "EVERYONE";
+$conf['allowed_for_host_search'] = "<%= @allowed_for_host_search.join(',') -%>";
 
 #
 # Who can use the host overview ?
 # This function is called if no Service Description is given.
 #
-$conf['allowed_for_host_overview'] = "EVERYONE";
+$conf['allowed_for_host_overview'] = "<%= @allowed_for_host_overview.join(',') -%>";
 
 #
 # Who can use the Pages function?
 # Keywords: EVERYONE NONE <USERNAME>
 # Example: conf['allowed_for_pages'] = "nagiosadmin,operator";
 #
-$conf['allowed_for_pages'] = "EVERYONE";
+$conf['allowed_for_pages'] = "<%= @allowed_for_pages.join(',') -%>";
 
 #
 # Which timerange should be used for the host overview site ?
 # use a key from array $views[]
 #
-$conf['overview-range'] = 1 ;
+$conf['overview-range'] = <%= @overview_range -%> ;
 
 #
 # Scale the preview images used in /popup
 #
-$conf['popup-width'] = "300px";
+$conf['popup-width'] = "<%= @popup_width -%>";
 
 #
 # jQuery UI Theme
 # http://jqueryui.com/themeroller/
 # Possible values are: lightness, smoothness, redmond, multisite
-$conf['ui-theme'] = 'smoothness';
+$conf['ui-theme'] = '<%= @ui_theme -%>';
 
 # Language definitions to use.
 # valid options are en_US, de_DE, es_ES, ru_RU, fr_FR
 #
-$conf['lang'] = "en_US";
+$conf['lang'] = "<%= @lang -%>";
 
 #
 # Date format
 #
-$conf['date_fmt'] = "d.m.y G:i";
+$conf['date_fmt'] = "<%= @date_fmt -%>";
 
 #
 # This option breaks down the template name based on _ and then starts to
@@ -186,17 +186,17 @@ $conf['date_fmt'] = "d.m.y G:i";
 #
 # It will find and match on check_esx3 first in templates dir then in templates.dist
 #
-$conf['enable_recursive_template_search'] = 1;
+$conf['enable_recursive_template_search'] = <%= @enable_recursive_template_search -%>;
 
 #
 # Direct link to the raw XML file.
 #
-$conf['show_xml_icon'] = 1;
+$conf['show_xml_icon'] = <%= @show_xml_icon -%>;
 
 #
 # Use FPDF Lib for PDF creation ?
 #
-$conf['use_fpdf'] = 1;
+$conf['use_fpdf'] = <%= @use_fpdf -%>;
 
 #
 # Use this file as PDF background.
@@ -206,26 +206,62 @@ $conf['background_pdf'] = '<%= @conf_dir -%>/background.pdf' ;
 #
 # Enable Calendar
 #
-$conf['use_calendar'] = 1;
+$conf['use_calendar'] = <%= @use_calendar -%>;
 
 #
 # Define default views with title and start timerange in seconds
 #
 # remarks: required escape on " with backslash
 #
-#$views[] = array('title' => 'One Hour',  'start' => (60*60) );
+<% if @views['one_hour'] -%>
+$views[] = array('title' => 'One Hour',  'start' => (60*60) );
+<% end -%>
+<% if @views['three_hours'] -%>
+$views[] = array('title' => '3 Hours',   'start' => (60*60*3) );
+<% end -%>
+<% if @views['four_hours'] -%>
 $views[] = array('title' => '4 Hours',   'start' => (60*60*4) );
+<% end -%>
+<% if @views['six_hours'] -%>
+$views[] = array('title' => '6 Hours',   'start' => (60*60*6) );
+<% end -%>
+<% if @views['twelve_hours'] -%>
+$views[] = array('title' => '12 Hours',   'start' => (60*60*12) );
+<% end -%>
+<% if @views['twenty_four_hours'] -%>
+$views[] = array('title' => '24 Hours',   'start' => (60*60*24) );
+<% end -%>
+<% if @views['twenty_five_hours'] -%>
 $views[] = array('title' => '25 Hours',  'start' => (60*60*25) );
+<% end -%>
+
+<% if @views['one_week'] -%>
 $views[] = array('title' => 'One Week',  'start' => (60*60*25*7) );
+<% end -%>
+<% if @views['two_weeks'] -%>
+$views[] = array('title' => 'Two Weeks',  'start' => (60*60*25*14) );
+<% end -%>
+
+<% if @views['one_month'] -%>
 $views[] = array('title' => 'One Month', 'start' => (60*60*24*32) );
+<% end -%>
+<% if @views['three_months'] -%>
+$views[] = array('title' => '3 Months', 'start' => (60*60*24*32*3) );
+<% end -%>
+<% if @views['six_months'] -%>
+$views[] = array('title' => '6 Months', 'start' => (60*60*24*32*6) );
+<% end -%>
+
+<% if @views['one_year'] -%>
 $views[] = array('title' => 'One Year',  'start' => (60*60*24*380) );
+<% end -%>
 
 #
 # rrdcached support
 # Use only with rrdtool svn revision 1511+
 #
 # $conf['RRD_DAEMON_OPTS'] = 'unix:/tmp/rrdcached.sock';
-$conf['RRD_DAEMON_OPTS'] = '<%= @rrd_listener -%>';
+$conf['RRD_DAEMON_OPTS'] = '<%= @rrd_daemon_opts -%>';
 
 # A list of directories to search for templates
 # /usr/local/pnp4nagios/share/templates.dist is always the last directory to be searched for templates
