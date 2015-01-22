@@ -68,4 +68,3 @@ default['pnp4nagios']['config']['multisite_base_url'] = '/nagios'
 default['pnp4nagios']['config']['livestatus_socket'] = 'unix:/usr/local/nagios/var/rw/live'
 
 default['pnp4nagios']['config']['mobile_devices'] = 'iPhone|iPod|iPad|android'
-

@@ -30,4 +30,3 @@ default['pnp4nagios']['auth_file'] = ::File.join(node['pnp4nagios']['conf_dir'],
 default['pnp4nagios']['nagios_base'] = '/nagios/cgi-bin'
 default['pnp4nagios']['multisite_base_url'] = '/nagios'
 default['pnp4nagios']['livestatus_socket'] = 'unix:/usr/local/nagios/var/rw/live'
-

@@ -1,7 +1,7 @@
 # npcd.cfg
 default['pnp4nagios']['npcd']['log_type'] = 'file'
 default['pnp4nagios']['npcd']['log_level'] = 0
-default['pnp4nagios']['npcd']['max_log_file_size'] = 10485760
+default['pnp4nagios']['npcd']['max_log_file_size'] = 10_485_760
 
 default['pnp4nagios']['npcd']['perfdata_run_cmd_args'] = '--bulk'
 default['pnp4nagios']['npcd']['identify_npcd'] = 1
