@@ -31,7 +31,8 @@ end
  node['pnp4nagios']['tmp_dir'],
  node['pnp4nagios']['conf_dir'],
  node['pnp4nagios']['home_dir'],
- node['pnp4nagios']['log_dir']
+ node['pnp4nagios']['log_dir'],
+ node['pnp4nagios']['rrd_stats_dir']
 ].each do |d|
   directory d do
     owner node['pnp4nagios']['user']
