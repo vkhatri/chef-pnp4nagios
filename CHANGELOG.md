@@ -3,6 +3,16 @@ pnp4nagios CHANGELOG
 
 This file is used to list changes made in each version of the pnp4nagios cookbook.
 
+0.2.5
+-----
+
+- Virender Khatri - added config node attributes
+
+- Virender Khatri - added missing directory node[pnp4nagios][rrd_stats_dir] resource
+
+- Virender Khatri - fixed lint errors
+
+
 0.2.1
 -----
 
