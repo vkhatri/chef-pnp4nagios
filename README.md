@@ -35,6 +35,8 @@ This cookbook does not manage rrdtool, instead utilize cookbook `rrdtool` to set
 
 ## Attributes
 
+>> Cnofig Attributes are yet to be updated here. Kindly check attributes file for available attributes.
+
 * `default['pnp4nagios']['version']` (default: `0.6.24`): pnp4nagios version
 
 * `default['pnp4nagios']['source_url']` (default: ): pnp4nagios download source url
