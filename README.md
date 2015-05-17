@@ -14,6 +14,7 @@ https://github.com/vkhatri/chef-pnp4nagios
 ## Dependencies
 
 - rrdtool
+- apache2
 
 
 ## RRDTool / RRDCached
