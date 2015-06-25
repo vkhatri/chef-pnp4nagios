@@ -6,10 +6,8 @@
     <title>Chef-pnp4nagios by vkhatri</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
+    <link rel="stylesheet" href="stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,7 +17,10 @@
       <header>
         <h1>Chef-pnp4nagios</h1>
         <p>Chef Cookbook to Install/Configure pnp4nagios</p>
+
         <p class="view"><a href="https://github.com/vkhatri/chef-pnp4nagios">View the Project on GitHub <small>vkhatri/chef-pnp4nagios</small></a></p>
+
+
         <ul>
           <li><a href="https://github.com/vkhatri/chef-pnp4nagios/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/vkhatri/chef-pnp4nagios/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -44,6 +45,7 @@
 
 <ul>
 <li>rrdtool</li>
+<li>apache2</li>
 </ul>
 
 <h2>
@@ -65,6 +67,12 @@
 <h2>
 <a id="attributes" class="anchor" href="#attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Attributes</h2>
 
+<blockquote>
+<blockquote>
+<p>Cnofig Attributes are yet to be updated here. Kindly check attributes file for available attributes.</p>
+</blockquote>
+</blockquote>
+
 <ul>
 <li><p><code>default['pnp4nagios']['version']</code> (default: <code>0.6.24</code>): pnp4nagios version</p></li>
 <li><p><code>default['pnp4nagios']['source_url']</code> (default: ): pnp4nagios download source url</p></li>
@@ -76,6 +84,7 @@
 <li><p><code>default['pnp4nagios']['auth_file']</code> (default: <code>/etc/pnp4nagios/pnp4nagios.users</code>): auth file for /pnp4nagios</p></li>
 <li><p><code>default['pnp4nagios']['source_dir']</code> (default: <code>/usr/local/src/pnp4nagios-x.y.z</code>): pnp4nagios source directory to install</p></li>
 <li><p><code>default['pnp4nagios']['install_dir']</code> (default: <code>/usr/local/pnp4nagios</code>): pnp4nagios install directory</p></li>
+<li><p><code>default['pnp4nagios']['tmp_dir']</code> (default: <code>/usr/local/pnp4nagios/tmpdir</code>): pnp4nagios install tmp directory</p></li>
 <li><p><code>default['pnp4nagios']['var_dir']</code> (default: <code>/usr/local/pnp4nagios/var</code>): pnp4nagios var directory</p></li>
 <li><p><code>default['pnp4nagios']['conf_dir']</code> (default: <code>/etc/pnp4nagios</code>): pnp4nagios configuration directory</p></li>
 <li><p><code>default['pnp4nagios']['home_dir']</code> (default: <code>/var/lib/pnp4nagios</code>): pnp4nagios home/lib directory</p></li>
@@ -131,12 +140,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 </pre>
       </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/vkhatri">vkhatri</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/vkhatri">vkhatri</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
