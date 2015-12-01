@@ -9,4 +9,4 @@ version '0.2.5'
 depends 'rrdtool'
 depends 'apache2'
 
-%w(amazon redhat centos fedora).each { |o| supports o }
+%w(ubuntu amazon redhat centos fedora).each { |o| supports o }

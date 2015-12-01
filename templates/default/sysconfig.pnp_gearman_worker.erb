@@ -1,0 +1,11 @@
+# Default settings for the pnp_gearman_worker init script.
+
+# Should the gearman worker daemon be started? ("yes" to enable)
+RUN="yes"
+
+# Additional options that are passed to the daemon.
+DAEMON_OPTS="--config=<%= @conf_dir %>/process_perfdata.cfg"
+
+# Change to this user before starting the daemon.
+# Note: the daemon refuses to start as root.
+USER=nagios

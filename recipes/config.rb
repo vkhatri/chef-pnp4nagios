@@ -134,6 +134,16 @@ template ::File.join(node['pnp4nagios']['conf_dir'], 'rra.cfg') do
   variables(:rra_step => node['pnp4nagios']['rra_step'], :rra => node['pnp4nagios']['rra'])
 end
 
+template '/etc/default/npcd' do
+  source 'sysconfig.npcd.erb'
+  owner 'root'
+  group 'root'
+  mode 0744
+  notifies :restart, 'service[npcd]', :delayed
+  variables(:conf_dir => node['pnp4nagios']['conf_dir'])
+  only_if { node['platform_family'] == 'debian' }
+end
+
 template '/etc/init.d/npcd' do
   source "init.npcd.#{node['platform_family']}.erb"
   owner 'root'
@@ -144,7 +154,17 @@ template '/etc/init.d/npcd' do
             :conf_dir => node['pnp4nagios']['conf_dir'],
             :user => node['pnp4nagios']['user'],
             :group => node['pnp4nagios']['group'],
+            :log_dir => node['pnp4nagios']['log_dir'],
             :install_dir => node['pnp4nagios']['install_dir'])
+end
+
+template '/etc/default/pnp_gearman_worker' do
+  source 'sysconfig.pnp_gearman_worker.erb'
+  owner 'root'
+  group 'root'
+  mode 0744
+  variables(:conf_dir => node['pnp4nagios']['conf_dir'])
+  only_if { node['platform_family'] == 'debian' }
 end
 
 template '/etc/init.d/pnp_gearman_worker' do
