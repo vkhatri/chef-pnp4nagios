@@ -3,6 +3,13 @@ pnp4nagios CHANGELOG
 
 This file is used to list changes made in each version of the pnp4nagios cookbook.
 
+0.2.7
+-----
+
+- Virender Khatri - #6, added ubuntu platform
+
+- Virender Khatri - #5, added support for apache 2.4
+
 0.2.5
 -----
 
