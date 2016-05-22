@@ -19,12 +19,7 @@
 
 # node.default['apache']['servertokens']    = 'Minimal'
 
-include_recipe 'apache2::default'
-include_recipe 'apache2::mod_python'
-include_recipe 'apache2::mod_php5'
-include_recipe 'apache2::mod_cgi'
-include_recipe 'apache2::mod_ssl'
-include_recipe 'apache2::mod_rewrite'
+node['pnp4nagios']['apache_modules'].each { |mod| include_recipe "apache2::#{mod}" }
 
 template node['pnp4nagios']['auth_file'] do
   source 'passwd.erb'

@@ -30,3 +30,9 @@ default['pnp4nagios']['auth_file'] = ::File.join(node['pnp4nagios']['conf_dir'],
 default['pnp4nagios']['nagios_base'] = '/nagios/cgi-bin'
 default['pnp4nagios']['multisite_base_url'] = '/nagios'
 default['pnp4nagios']['livestatus_socket'] = 'unix:/usr/local/nagios/var/rw/live'
+
+default['pnp4nagios']['apache_modules'] = value_for_platform(
+  %w(amazon debian ubuntu) => { 'default' => %w(default mod_python mod_php5 mod_cgi mod_ssl mod_rewrite mpm_prefork) },
+  %w(centos redhat fedora) => { '>= 7.0' => %w(default mod_wsgi mod_php5 mod_cgi mod_ssl mod_rewrite),
+                                'default' => %w(default mod_python mod_php5 mod_cgi mod_ssl mod_rewrite) }
+)
