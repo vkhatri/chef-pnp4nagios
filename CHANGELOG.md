@@ -3,6 +3,15 @@ pnp4nagios CHANGELOG
 
 This file is used to list changes made in each version of the pnp4nagios cookbook.
 
+0.2.8
+-----
+
+- Virender Khatri - Fix for issue #7, updated apache2 modules
+
+- Virender Khatri - Added source_url and issues_url
+
+- Virender Khatri - Fix rubocop
+
 0.2.7
 -----
 
