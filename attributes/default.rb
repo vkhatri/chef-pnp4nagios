@@ -1,4 +1,4 @@
-default['pnp4nagios']['version'] = '0.6.24'
+default['pnp4nagios']['version'] = '0.6.25'
 
 # owner / group
 default['pnp4nagios']['user'] = 'nagios'
