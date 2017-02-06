@@ -3,6 +3,15 @@ pnp4nagios CHANGELOG
 
 This file is used to list changes made in each version of the pnp4nagios cookbook.
 
+0.2.9
+-----
+
+- Virender Khatri - Issue #8, set default value for default[pnp4nagios][rra]
+
+- Virender Khatri - Issue #9, update pnp4nagios version to 0.6.25
+
+- Virender Khatri - Added lint/tests
+
 0.2.8
 -----
 

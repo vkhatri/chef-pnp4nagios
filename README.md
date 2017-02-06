@@ -1,7 +1,7 @@
 pnp4nagios Cookbook
 ================
 
-[![Cookbook](http://img.shields.io/badge/cookbook-v0.2.8-green.svg)](https://github.com/vkhatri/chef-pnp4nagios)[![Build Status](https://travis-ci.org/vkhatri/chef-pnp4nagios.svg?branch=master)](https://travis-ci.org/vkhatri/chef-pnp4nagios)
+[![Cookbook](https://img.shields.io/github/tag/vkhatri/chef-pnp4nagios.svg)](https://github.com/vkhatri/chef-pnp4nagios)[![Build Status](https://travis-ci.org/vkhatri/chef-pnp4nagios.svg?branch=master)](https://travis-ci.org/vkhatri/chef-pnp4nagios)
 
 This is a [Chef] cookbook to manage [PNP4Nagios] using LWRP.
 
@@ -38,7 +38,7 @@ This cookbook does not manage rrdtool, instead utilize cookbook `rrdtool` to set
 
 >> Cnofig Attributes are yet to be updated here. Kindly check attributes file for available attributes.
 
-* `default['pnp4nagios']['version']` (default: `0.6.24`): pnp4nagios version
+* `default['pnp4nagios']['version']` (default: `0.6.25`): pnp4nagios version
 
 * `default['pnp4nagios']['source_url']` (default: ): pnp4nagios download source url
 
