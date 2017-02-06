@@ -26,7 +26,7 @@ template node['pnp4nagios']['auth_file'] do
   owner node['apache2']['user']
   group node['apache2']['group']
   variables(:users => node['pnp4nagios']['users'])
-  mode 0640
+  mode 0o640
   only_if { node['pnp4nagios']['manage_auth_file'] }
 end
 
@@ -34,7 +34,7 @@ template ::File.join(node['apache']['dir'], 'conf-available', 'pnp4nagios.conf')
   source 'apache.vhost.erb'
   owner node['apache2']['user']
   group node['apache2']['group']
-  mode 0660
+  mode 0o660
   variables(:auth_file => node['pnp4nagios']['auth_file'],
             :install_dir => node['pnp4nagios']['install_dir'])
   notifies :reload, 'service[apache2]', :delayed

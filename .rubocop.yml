@@ -29,3 +29,5 @@ MethodLength:
   Enabled: false
 AbcSize:
   Enabled: false
+BlockLength:
+  Max: 50

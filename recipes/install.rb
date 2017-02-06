@@ -36,7 +36,7 @@ end
   directory d do
     owner node['pnp4nagios']['user']
     group node['pnp4nagios']['group']
-    mode 0775
+    mode 0o775
   end
 end
 
